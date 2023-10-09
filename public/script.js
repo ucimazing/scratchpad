@@ -7,6 +7,11 @@ const smoothnessSlider = document.getElementById("smoothnessSlider");
 const smoothingStrengthSlider = document.getElementById(
   "smoothingStrengthSlider"
 );
+const smoothnessValueDisplay = document.getElementById("smoothnessValue");
+smoothnessSlider.addEventListener("input", (e) => {
+  ctx.lineWidth = e.target.value;
+  smoothnessValueDisplay.textContent = e.target.value; // Update UI with current slider value
+});
 
 const socket = io();
 
@@ -130,4 +135,45 @@ socket.on("loadDrawing", (data) => {
     ctx.strokeStyle = currentStrokeStyle;
     ctx.lineWidth = currentLineWidth;
   });
+});
+
+//for capture screenshot
+const captureScreenBtn = document.getElementById("captureScreenBtn");
+captureScreenBtn.addEventListener("click", captureScreen);
+
+//transparent background
+// function captureScreen() {
+//   const dataURL = canvas.toDataURL("image/png");
+//   const link = document.createElement("a");
+//   link.href = dataURL;
+//   link.download = "canvas_capture.png";
+//   link.click();
+// }
+
+//as it is background
+function captureScreen() {
+  // Create a temporary canvas of the same size as the original
+  const tempCanvas = document.createElement("canvas");
+  tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
+  const tempCtx = tempCanvas.getContext("2d");
+
+  // Fill the temporary canvas with a white background
+  tempCtx.fillStyle = "#FFFFFF";
+  tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+
+  // Draw the original canvas onto the temporary canvas
+  tempCtx.drawImage(canvas, 0, 0);
+
+  // Save the combined image as PNG
+  const dataURL = tempCanvas.toDataURL("image/png");
+  const link = document.createElement("a");
+  link.href = dataURL;
+  link.download = "canvas_capture.png";
+  link.click();
+}
+// for window resize
+
+window.addEventListener("resize", function () {
+  location.reload(); // Refreshes the page
 });
