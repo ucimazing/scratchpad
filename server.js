@@ -8,14 +8,22 @@ const io = socketIo(server);
 
 app.use(express.static("public"));
 
+// Store the drawing history
+const drawingHistory = [];
+
 io.on("connection", (socket) => {
   console.log("a user connected");
 
+  // Send the entire drawing history to the newly connected user
+  socket.emit("loadDrawing", drawingHistory);
+
   socket.on("drawing", (data) => {
-    socket.broadcast.emit("drawing", data);
+    drawingHistory.push(data); // Store drawing data in history
+    socket.broadcast.emit("drawing", data); // Send to all other clients
   });
 
   socket.on("eraseAll", () => {
+    drawingHistory.length = 0; // Clear the drawing history
     socket.broadcast.emit("eraseAll");
   });
 

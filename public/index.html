@@ -9,22 +9,32 @@
   <body>
     <div class="container">
       <div class="tools">
-        <button id="eraseBtn">Erase</button>
-        <button id="eraseAllBtn">Erase All</button>
+        <div>
+          <button id="eraseBtn">Eraser</button>
+          <button id="eraseAllBtn">Erase All</button>
+        </div>
         <input type="color" id="colorPicker" value="#000000" />
-        <label for="smoothnessSlider">Line Width:</label>
-        <input type="range" id="smoothnessSlider" min="1" max="100" value="5" />
-        <label for="strokeSmoothing">Stroke Smoothing:</label>
-        <input type="checkbox" id="strokeSmoothing" checked />
-        <label for="smoothingStrengthSlider">Smoothing Strength:</label>
-        <input
-          type="range"
-          id="smoothingStrengthSlider"
-          min="0"
-          max="100"
-          step="1"
-          value="50"
-        />
+        <div>
+          <label for="smoothnessSlider">Line Width:</label>
+          <input
+            type="range"
+            id="smoothnessSlider"
+            min="1"
+            max="200"
+            value="5"
+          />
+        </div>
+        <div>
+          <label for="smoothingStrengthSlider">Smoothing Strength:</label>
+          <input
+            type="range"
+            id="smoothingStrengthSlider"
+            min="10"
+            max="100"
+            step="1"
+            value="50"
+          />
+        </div>
       </div>
       <canvas id="drawCanvas"></canvas>
     </div>

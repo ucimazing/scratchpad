@@ -18,7 +18,7 @@ html {
 .tools {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 10px;
   align-items: center;
   background-color: #eee;
