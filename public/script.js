@@ -28,7 +28,7 @@ window.addEventListener("resize", () => {
 let drawing = false;
 let lastX, lastY;
 
-canvas.addEventListener("mousedown", (e) => {
+canvas.addEventListener("pointerdown", (e) => {
   drawing = true;
   [lastX, lastY] = [
     e.clientX - canvas.offsetLeft,
@@ -36,12 +36,12 @@ canvas.addEventListener("mousedown", (e) => {
   ];
 });
 
-canvas.addEventListener("mouseup", () => {
+canvas.addEventListener("pointerup", () => {
   drawing = false;
   ctx.beginPath();
 });
 
-canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("pointermove", draw);
 
 colorPicker.addEventListener("click", (e) => {
   ctx.strokeStyle = e.target.value;
