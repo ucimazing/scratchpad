@@ -42,6 +42,7 @@ button:hover {
 }
 
 canvas {
+  touch-action: none;
   border: none;
   display: block;
   width: 100%;

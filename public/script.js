@@ -41,7 +41,11 @@ canvas.addEventListener("pointerup", () => {
   ctx.beginPath();
 });
 
-canvas.addEventListener("pointermove", draw);
+//canvas.addEventListener("pointermove", draw);
+canvas.addEventListener("pointermove", function (e) {
+  e.preventDefault();
+  draw(e);
+});
 
 colorPicker.addEventListener("click", (e) => {
   ctx.strokeStyle = e.target.value;
