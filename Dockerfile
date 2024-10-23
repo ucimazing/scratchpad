@@ -1,20 +1,6 @@
-# Use the official Node.js image as the base image
-FROM node:18
-
-# Create and set the working directory inside the container
-WORKDIR /app
-
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Install project dependencies
-RUN npm install
-
-# Copy the rest of the application code
-COPY . .
-
-# Expose the port that the application runs on
+# Use the official Nginx image from Docker Hub
+FROM nginx:alpine
+# Copy the contents of the project folder to the Nginx web server directory
+COPY . /usr/share/nginx/html
+# Expose port 80 so the web server is accessible on the browser
 EXPOSE 80
-
-# Start the application
-CMD ["node", "server.js"]
