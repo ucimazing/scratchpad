@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE_NAME = 'my-node-app' // Replace with your Docker image name
+        DOCKER_IMAGE_NAME = 'scratchpad' // Replace with your Docker image name
         DOCKER_TAG = 'latest'
-        DOCKER_HUB_USERNAME = 'your-docker-username' // Replace with your Docker Hub username
+        DOCKER_HUB_USERNAME = 'ucdas' // Replace with your Docker Hub username
         DOCKER_HUB_CREDENTIALS_ID = 'docker-hub' // Jenkins credentials ID for Docker Hub
     }
 
